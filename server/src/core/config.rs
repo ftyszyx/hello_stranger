@@ -49,8 +49,8 @@ impl Config {
 impl DatabaseConfig {
     fn from_env() -> Result<Self> {
         Ok(DatabaseConfig {
-            db_url: env::var("DB_URL")
-                .context("DB_URL must be set")?,
+            db_url: env::var("DATABASE_URL")
+                .context("DATABASE_URL must be set")?,
             max_connections: env::var("DB_MAX_CONNECTIONS")
                 .unwrap_or_else(|_| "100".to_string())
                 .parse()

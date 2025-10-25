@@ -20,7 +20,7 @@ pub fn create_router(app_state: AppState) -> Service {
     .allow_origin(AllowOrigin::any())
     .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE, Method::OPTIONS])
     .allow_headers(AllowHeaders::any()).into_handler();
-    let mut router=Router::new()
+    let router=Router::new()
         .hoop(affix_state::inject(app_state))
         .get(hello)
         .push(user_api::routes());
