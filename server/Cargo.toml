@@ -19,8 +19,28 @@ tower-http = { version = "0.6.2", features = ["cors", "trace"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing-appender = "0.2"
+# 数据库
+sea-orm = { version = "1.1.13", features = [ "sqlx-postgres", "runtime-tokio-native-tls", "macros","debug-print"] }
+sqlx = { version = "0.8.6", features = [ "runtime-tokio", "postgres" ,"migrate"] }
+
+####################其它依赖####################
 # 环境变量
 dotenvy = "0.15.7"
-# 数据库
-sqlx = { version = "0.8.6", features = [ "runtime-tokio", "postgres" ] }
-sea-orm = { version = "1.1.13", features = [ "sqlx-postgres", "runtime-tokio-native-tls", "macros","debug-print"] }
+# 密码加密
+bcrypt = "0.17.1"
+# jwt
+jsonwebtoken = { version = "10.1.0", features = ["rust_crypto"] }
+# 时间
+chrono = { version = "0.4.38", features = ["serde"] }
+# 错误处理
+anyhow = "1.0.100"
+
+# 本地依赖
+entity= { path = "crates/entity" }
+
+serde_json = "1.0.145"
+redis = { version = "0.32.7", features = ["tokio-comp", "json","aio"]}
+
+
+[workspace]
+members = ["crates/entity"]
